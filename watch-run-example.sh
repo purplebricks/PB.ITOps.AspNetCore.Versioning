@@ -1,0 +1,1 @@
+dotnet watch --project examples/ApiVersioningExample/ApiVersioningExample.csproj run
