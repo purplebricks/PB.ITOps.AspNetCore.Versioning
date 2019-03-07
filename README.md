@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/pb1gwc02bi153ln8?svg=true)](https://ci.appveyor.com/project/ilivewithian/pb-itops-aspnetcore-versioning)
+[![NuGet](https://img.shields.io/nuget/v/PB.ITOps.AspNetCore.Versioning.svg)](https://www.nuget.org/packages/PB.ITOps.AspNetCore.Versioning/)
+
 # ASP.NET API Versioning
 
 This is an opinionated convention for versioning web APIs. It extends [Microsoft ASP.Net API Versioning](https://github.com/Microsoft/aspnet-api-versioning) by introducing a new convention and attributes.
