@@ -2,11 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageTags>AspNet;AspNetCore;Versioning</PackageTags>
+        <PackageTags>AspNet;AspNetCore;Versioning;Purplebricks</PackageTags>
         <Company>Purplebricks</Company>
-        <Version>0.0.0</Version>
+        <Version>1.0.0</Version>
         <Summary>Simplified API Versioning</Summary>
-        <Description>This is an opinionated convention for versioning web APIs. It extends [Microsoft ASP.Net API Versioning](https://github.com/Microsoft/aspnet-api-versioning) by introducing a new convention and attributes.</Description>
+        <Description>This is a simple convention for versioning web APIs. It extends [Microsoft ASP.Net API Versioning](https://github.com/Microsoft/aspnet-api-versioning) by introducing a new convention and attributes.</Description>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PackageIconUrl>https://pbonlineassets.azureedge.net/web-images/marketing-global/favicons/v3/apple-touch-icon-152x152.png</PackageIconUrl>
         <PackageProjectUrl>https://github.com/purplebricks/PB.ITOps.AspNetCore.Versioning/</PackageProjectUrl>
