@@ -87,7 +87,7 @@ namespace PB.ITOps.AspNetCore.Versioning
         }
         
         private void SetActionApiVersions(ControllerModel controllerModel, ApiVersion controllerIntroducedInVersion,
-            ApiVersion controllerRemovedAsOfVersion, ControllerApiVersionConventionBuilder controller)
+            ApiVersion controllerRemovedAsOfVersion, IControllerConventionBuilder controller)
         {
             foreach (var actionModel in controllerModel.Actions)
             {
@@ -111,7 +111,7 @@ namespace PB.ITOps.AspNetCore.Versioning
             }
         }
 
-        private void SetActionApiVersions(ActionModel actionModel, ControllerApiVersionConventionBuilder controller, ApiVersion introducedVersion, ApiVersion removedVersion)
+        private void SetActionApiVersions(ActionModel actionModel, IControllerConventionBuilder controller, ApiVersion introducedVersion, ApiVersion removedVersion)
         {
             var actionSupportedVersions = _allVersions.GetSupportedVersions(introducedVersion, removedVersion);
             var actionDeprecatedVersions = _allVersions.GetDeprecatedVersions(introducedVersion, removedVersion);
@@ -121,7 +121,7 @@ namespace PB.ITOps.AspNetCore.Versioning
             action.HasDeprecatedApiVersions(actionDeprecatedVersions);
         }
 
-        private void SetControllerApiVersions(ControllerApiVersionConventionBuilder controller,
+        private void SetControllerApiVersions(IControllerConventionBuilder controller,
             ApiVersion introducedVersion, ApiVersion removedVersion)
         {
             var supportedVersions =
