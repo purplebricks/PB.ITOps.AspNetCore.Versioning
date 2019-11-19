@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -26,11 +27,11 @@ namespace ApiVersioningExample.DependencyInjection
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
-                options.AddSecurityDefinition("Bearer", new ApiKeyScheme()
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
                     Description = "Authorization header using Bearer scheme",
                     Name = "Authorization",
-                    In = "header"
+                    In = ParameterLocation.Header
                 });
                 
                 options.DocumentFilter<SwaggerSecurityRequirementsDocumentFilter>();
@@ -39,9 +40,9 @@ namespace ApiVersioningExample.DependencyInjection
             return services;
         }
         
-        private static Info CreateInfoForApiVersion(ApiVersionDescription description, ApiDetails apiDetails)
+        private static OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description, ApiDetails apiDetails)
         {
-            var info = new Info()
+            var info = new OpenApiInfo()
             {
                 Title = $"{apiDetails.Title} {description.ApiVersion} - {apiDetails.Owners}",
                 Version = description.ApiVersion.ToString(),
@@ -59,13 +60,13 @@ namespace ApiVersioningExample.DependencyInjection
 
         private class SwaggerSecurityRequirementsDocumentFilter : IDocumentFilter
         {
-            public void Apply(SwaggerDocument document, DocumentFilterContext context)
+            public void Apply(OpenApiDocument document, DocumentFilterContext context)
             {
-                document.Security = new List<IDictionary<string, IEnumerable<string>>>()
+                document.SecurityRequirements = new List<OpenApiSecurityRequirement>()
                 {
-                    new Dictionary<string, IEnumerable<string>>()
+                    new OpenApiSecurityRequirement()
                     {
-                        { "Bearer", new string[]{ } } 
+                        { new OpenApiSecurityScheme(), new List<string>() } 
                     }
                 };
             }
